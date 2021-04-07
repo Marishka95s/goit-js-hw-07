@@ -43,7 +43,8 @@ function createBoxes(amount) {
     const divEls = [];
     for (let i = 0; i < amount; i += 1) {
         const divEl = document.createElement('div');
-        divEl.style.backgroundColor = 'blue'; //random rgb??
+        const randomColor = Math.floor(Math.random()*16777215).toString(16);
+        divEl.style.backgroundColor = "#" + randomColor; 
         divEl.style.display = 'block';
         divEl.style.margin = '2px';
         divEl.style.width = 20 + 10 * i + 'px';
