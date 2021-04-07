@@ -13,15 +13,21 @@
             line-height: 1.5;
         }
         input {
-            width: 190px;
+            width: 200px;
         }
     </style>
 </head>
 
 <body>
     <p><a href="index.html">На главную</a></p>
-    <input type="text" id="validation-input" data-length="6" placeholder="Введи количество элементов" />
-    <button type="button" data-action="creation">Создать</button>
+    
+    <div id="controls">
+        <input type="number" min="0" max="100" step="1" placeholder="Введи количество элементов"/>
+        <button type="button" data-action="render">Создать</button>
+        <button type="button" data-action="destroy">Очистить</button>
+    </div>
+    
+    <div id="boxes"></div>
     <script src="js/task-08.js" type="module"></script>
 </body>
 

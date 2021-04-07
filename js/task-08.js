@@ -10,10 +10,54 @@
 // Каждый следующий div после первого, должен быть шире и выше предыдущего на 10px
 // Создай функцию destroyBoxes(), которая очищает div#boxes.
 
-// <div id="controls">
-//   <input type="number" min="0" max="100" step="1" />
-//   <button type="button" data-action="render">Создать</button>
-//   <button type="button" data-action="destroy">Очистить</button>
-// </div>
+const inputEl = document.querySelector('input');
+const mainDiv = document.querySelector('#boxes')
+const buttons = document.querySelectorAll('button');
+const renderBtn = buttons[0];
+const destroyBtn = buttons[1];
 
-// <div id="boxes"></div>
+let necessaryElQuantity = 0;
+
+inputEl.addEventListener('input', onInputChange);
+renderBtn.addEventListener('click', onRenderBtnClick);
+destroyBtn.addEventListener('click', onDestroyBtnClick);
+
+function onInputChange() {
+    necessaryElQuantity = inputEl.value;
+    console.log('Изменение значения импута!',`Собираются срендерить ${necessaryElQuantity} элементов!`);
+};
+
+function onRenderBtnClick() {
+    console.log('Нажатие на клавишу рендеринга');
+    createBoxes(necessaryElQuantity);
+    mainDiv.style.display = 'flex';
+    mainDiv.style.flexWrap = 'wrap';
+    console.log(`Создано ${necessaryElQuantity} элементов`);
+};
+function onDestroyBtnClick() {
+    console.log('Нажатие на клавишу дестроинга');
+    destroyBoxes();
+    console.log('Все обьекты удалены');
+};
+function createBoxes(amount) {
+    const divEls = [];
+    for (let i = 0; i < amount; i += 1) {
+        const divEl = document.createElement('div');
+        divEl.style.backgroundColor = 'blue'; //random rgb??
+        divEl.style.display = 'block';
+        divEl.style.margin = '2px';
+        divEl.style.width = 20 + 10 * i + 'px';
+        divEl.style.height = 20 + 10 * i + 'px';
+        console.log('Создан елемент');
+        divEls.push(divEl);
+    }
+    return mainDiv.append(...divEls);;
+};
+
+function destroyBoxes() {
+    const elementsForDestroying = mainDiv.querySelectorAll('div');
+    for (let i = 0; i < elementsForDestroying.length; i += 1) {
+        mainDiv.removeChild(elementsForDestroying[i]);
+    };
+};
+
