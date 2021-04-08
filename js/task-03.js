@@ -27,9 +27,9 @@ const images = [
 const elementsContainer = document.querySelector('ul');
 
 const creationElement = ({ url, alt }) => {
-  return `<img alt="${alt}" src="${url}" class='item-style'></img>`;
+  return `<li class='item'><img alt="${alt}" src="${url}" class='img-style'></img></li>`;
 };
 
-const createdElements = images.map(creationElement);
+const createdElements = images.map(creationElement).join('');
 
 elementsContainer.insertAdjacentHTML('afterbegin', createdElements);
