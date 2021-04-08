@@ -14,10 +14,10 @@ function onInputFocus() {
     inputEl.addEventListener('input', onInputChange);    
 };
 function onInputBlur() {
-   
+    inputEl.classList.remove('valid');
     if (Number(inputEl.dataset.length) === inputLength) {
         inputEl.classList.replace('invalid', 'valid');
-    } else { inputEl.classList.add('invalid');}
+    } else { inputEl.classList.add('invalid'); }
 };
 function onInputChange() {
     inputLength = inputEl.value.length;
