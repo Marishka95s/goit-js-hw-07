@@ -10,8 +10,7 @@ console.log(`В списке ${ulCategories.length} категории.`);
 // Например для первой категории получится:
 // Категория: Животные
 // Количество элементов: 4
-
-for (let i = 0; i < ulCategories.length; i += 1) {
-    console.log(`Категория: ${ulCategories[i].childNodes[1].textContent}`);
-console.log(`Количество элементов: ${ulCategories[i].childNodes[3].children.length}`);
-}
+ulCategories.forEach(category => {
+    console.log(`Категория: ${category.childNodes[1].textContent}`);
+    console.log(`Количество элементов: ${category.childNodes[3].children.length}`);
+});

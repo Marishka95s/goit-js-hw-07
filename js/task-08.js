@@ -40,15 +40,19 @@ function onDestroyBtnClick() {
     console.log('Все обьекты удалены');
 };
 function createBoxes(amount) {
+    let allRendered = mainDiv.querySelectorAll('div');
+    let renderedQuantuty = allRendered.length;
     const divEls = [];
+    
     for (let i = 0; i < amount; i += 1) {
         const divEl = document.createElement('div');
         const randomColor = Math.floor(Math.random()*16777215).toString(16);
         divEl.style.backgroundColor = "#" + randomColor; 
         divEl.style.display = 'block';
         divEl.style.margin = '2px';
-        divEl.style.width = 20 + 10 * i + 'px';
-        divEl.style.height = 20 + 10 * i + 'px';
+
+        divEl.style.width = 20 + 10 * (i + renderedQuantuty) + 'px';
+        divEl.style.height = 20 + 10 * (i + renderedQuantuty) + 'px';
         console.log('Создан елемент');
         divEls.push(divEl);
     }
@@ -57,8 +61,6 @@ function createBoxes(amount) {
 
 function destroyBoxes() {
     const elementsForDestroying = mainDiv.querySelectorAll('div');
-    for (let i = 0; i < elementsForDestroying.length; i += 1) {
-        mainDiv.removeChild(elementsForDestroying[i]);
-    };
+    elementsForDestroying.forEach(elem => {mainDiv.removeChild(elem);})
 };
 

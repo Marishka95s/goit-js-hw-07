@@ -11,17 +11,14 @@ inputEl.addEventListener('blur', onInputBlur);
 
 let inputLength = 0;
 function onInputFocus() {
-    console.log('Инпут получил фокус');
     inputEl.addEventListener('input', onInputChange);    
 };
 function onInputBlur() {
-    console.log('Инпут потерял фокус');
-    inputEl.classList.add('invalid');
+   
     if (Number(inputEl.dataset.length) === inputLength) {
         inputEl.classList.replace('invalid', 'valid');
-    }
+    } else { inputEl.classList.add('invalid');}
 };
 function onInputChange() {
     inputLength = inputEl.value.length;
-    console.log('Изменение значения импута!',`Введено ${inputLength} символов`);
 };
