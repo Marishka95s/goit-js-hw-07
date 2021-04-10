@@ -6,19 +6,14 @@
 // Для добавления стилей, используй CSS-классы valid и invalid.
 
 const inputEl = document.querySelector('input');
-inputEl.addEventListener('focus', onInputFocus);
 inputEl.addEventListener('blur', onInputBlur);
 
-let inputLength = 0;
-function onInputFocus() {
-    inputEl.addEventListener('input', onInputChange);    
-};
 function onInputBlur() {
     inputEl.classList.add('valid');
-    if (Number(inputEl.dataset.length) === inputLength) {
+    if (Number(inputEl.value.length) === Number(inputEl.dataset.length)) {
         inputEl.classList.replace('invalid', 'valid');
-    } else { inputEl.classList.remove('valid'); inputEl.classList.add('invalid'); }
-};
-function onInputChange() {
-    inputLength = inputEl.value.length;
+    } else {
+        inputEl.classList.remove('valid');
+        inputEl.classList.add('invalid');
+    }
 };

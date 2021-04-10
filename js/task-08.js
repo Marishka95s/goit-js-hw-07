@@ -56,7 +56,7 @@ function createBoxes(amount) {
         console.log('Создан елемент');
         divEls.push(divEl);
     }
-    return mainDiv.append(...divEls);;
+    return mainDiv.append(...divEls);
 };
 
 function destroyBoxes() {
